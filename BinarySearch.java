@@ -10,6 +10,8 @@ public class BinarySearch {
 	public BinarySearch(int[] arr, int number){
 		int index = binarySearch(arr, number);
 		System.out.println(index);
+		int index2 = binarySearchUsingRecustion(arr, number, 0, arr.length-1);
+		System.out.println(index2);
 	}
 	
 	private int binarySearch(int[] arr, int number){
@@ -29,5 +31,23 @@ public class BinarySearch {
 			}
 		}
 		return -1;
+	}
+	
+	private int binarySearchUsingRecustion(int[] arr, int number, int min, int max){
+		if(min > max){
+			return -1;
+		}
+		
+		int mid = min + (max - min) /2;
+		
+		if(arr[mid] == number){
+			return mid;
+		}
+		
+		if(arr[mid] > number){
+			return binarySearchUsingRecustion(arr, number, min, mid-1);
+		}else{
+			return binarySearchUsingRecustion(arr, number, mid+1, max);
+		}
 	}
 }
