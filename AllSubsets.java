@@ -19,6 +19,8 @@ public class AllSubsets {
 	}
 	
 	private void populateSubsets(List<List<Integer>> subSetList, List<Integer> list){
+		
+		//base case
 		if(list.isEmpty()){
 			subSetList.add(new ArrayList<>());
 			return;
@@ -29,8 +31,10 @@ public class AllSubsets {
 		
 		populateSubsets(subSetList, list);
 		
-		List<List<Integer>> newList = new ArrayList<>();
+		// copy the old list to the new one to avoid concurrent update
+		List<List<Integer>> newList = new ArrayList<>();		
 		newList.addAll(subSetList);
+		
 		for(List<Integer> subset: newList){
 			List<Integer> newSubset = new ArrayList<>();
 			newSubset.addAll(subset);
